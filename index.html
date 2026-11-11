@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailDesk - Train Reservation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h2>Rail<span>Desk</span></h2>
+            <p>TRAIN RESERVATION PORTAL</p>
+        </div>
+
+        <div class="header-info">
+            <span>Welcome to RailDesk</span>
+            <span id="currentDate"></span>
+            <span><label for="languageSelect">Language / மொழி</label> <select id="languageSelect" aria-label="Choose language"><option value="en">English</option><option value="ta">தமிழ்</option></select></span>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-navigation" aria-label="Main navigation">
+        <button class="nav-item active" onclick="openPage('home', this)">Home</button>
+        <button class="nav-item" onclick="openPage('trainSearch', this)">Train Search</button>
+        <button class="nav-item" onclick="openPage('destinations', this)">Destinations</button>
+        <button class="nav-item" onclick="openPage('journeyGuide', this)">Journey Guide</button>
+        <button class="nav-item" onclick="openPage('bookings', this)">My Bookings</button>
+        <button class="nav-item" onclick="openPage('pnr', this)">PNR Enquiry</button>
+        <button class="nav-item" onclick="openPage('travelTools', this)">Unique Features</button>
+        <button class="nav-item" onclick="openPage('help', this)">Help</button>
+    </nav>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="home" class="page active">
+
+
+            <div class="welcome-text">
+                <h2>Plan your train journey</h2>
+                <p>Search trains between stations and find a suitable journey.</p>
+            </div>
+
+
+            <div class="home-overview">
+                <div class="overview-copy">
+                    <span class="eyebrow">YOUR JOURNEY, REIMAGINED</span>
+                    <h3>Every mile has a story.</h3>
+                    <p>Explore routes, compare travel patterns and shape a smoother journey before you board.</p>
+                    <div class="overview-actions"><button class="main-btn" onclick="openPage('trainSearch'); document.getElementById('from').focus()">Plan a journey</button><button class="text-link" onclick="openPage('travelTools')">Explore unique features ↗</button></div>
+                </div>
+                <div class="route-art" aria-label="Illustration of a train moving through a landscape"><div class="route-sun"></div><div class="route-hill hill-one"></div><div class="route-hill hill-two"></div><div class="route-track"></div><div class="mini-train"><span></span><span></span><span></span></div><div class="route-label"><b>RAILDESK EXPRESS</b><small>YOUR NEXT ADVENTURE STARTS HERE</small></div></div>
+            </div>
+            <div class="quick-stats">
+                <div class="quick-stat"><span class="stat-icon">↗</span><div><strong>10+</strong><small>Demo destinations</small></div></div><div class="quick-stat"><span class="stat-icon">◷</span><div><strong>24/7</strong><small>Plan anytime</small></div></div><div class="quick-stat"><span class="stat-icon">♧</span><div><strong>12</strong><small>Smart travel tools</small></div></div><div class="quick-stat"><span class="stat-icon">✦</span><div><strong>1 place</strong><small>Your journey hub</small></div></div>
+            </div>
+            <div class="home-insights">
+                <div class="section-heading"><div><span class="eyebrow">THE JOURNEY SNAPSHOT</span><h3>Plan smarter, travel lighter.</h3></div><span class="demo-tag">ILLUSTRATIVE DATA</span></div>
+                <div class="insight-grid">
+                    <article class="panel insight-card"><div class="panel-title"><h3>Travel demand pulse</h3><span>Sample weekly trend</span></div><div class="demand-chart" role="img" aria-label="Illustrative weekly travel demand bar chart"><div class="demand-bar"><i style="height:42%"></i><small>Mon</small></div><div class="demand-bar"><i style="height:58%"></i><small>Tue</small></div><div class="demand-bar"><i style="height:48%"></i><small>Wed</small></div><div class="demand-bar"><i style="height:76%"></i><small>Thu</small></div><div class="demand-bar hot"><i style="height:94%"></i><small>Fri</small></div><div class="demand-bar"><i style="height:83%"></i><small>Sat</small></div><div class="demand-bar"><i style="height:62%"></i><small>Sun</small></div></div><div class="chart-foot"><span><i class="legend-dot"></i> Relative interest</span><b>Friday peak</b></div></article>
+                    <article class="panel insight-card"><div class="panel-title"><h3>Where your fare goes</h3><span>Example trip budget</span></div><div class="fare-visual"><div class="donut-chart"><div><b>₹1,150</b><small>EST. TOTAL</small></div></div><div class="fare-legend"><p><i class="fare-dot rail"></i><span>Train fare</span><b>₹650</b></p><p><i class="fare-dot food"></i><span>Food</span><b>₹300</b></p><p><i class="fare-dot local"></i><span>Local travel</span><b>₹200</b></p></div></div><div class="chart-foot"><span>Adjust values in Trip Budget Planner</span><b>Sample</b></div></article>
+                    <article class="panel insight-card route-insight"><div class="panel-title"><h3>Popular route ideas</h3><span>Explore destinations</span></div><div class="route-row"><div class="station-code">CBE</div><div class="route-line"><b>Coimbatore</b><span>••••••••••</span><small>Scenic city break</small></div><div class="station-code">MAA</div><div class="route-end"><b>Chennai</b><small>Capital connection</small></div></div><div class="route-row"><div class="station-code">MDU</div><div class="route-line"><b>Madurai</b><span>••••••••••</span><small>Heritage trail</small></div><div class="station-code">SLE</div><div class="route-end"><b>Salem</b><small>Weekend escape</small></div></div><p class="route-note">Choose your own stations in Train Search to view simulated train options.</p></article>
+                </div>
+            </div>
+            <div class="feature-columns"><div class="feature-intro"><span class="eyebrow">MORE THAN A TICKET</span><h3>Your trip, thoughtfully organised.</h3><p>Small details make a big difference. Use these quick spaces to prepare, connect and keep your journey on track.</p></div><button class="feature-tile" onclick="openPage('travelTools')"><span class="feature-symbol">⌁</span><b>Before you board</b><small>Class advisor, leave-home planner and packing checklist.</small><em>OPEN UNIQUE FEATURES ↗</em></button><button class="feature-tile" onclick="openPage('bookings')"><span class="feature-symbol">▤</span><b>Your travel journal</b><small>Saved tickets, spending overview and eco snapshots.</small><em>VIEW BOOKINGS ↗</em></button><button class="feature-tile" onclick="openPage('pnr')"><span class="feature-symbol">◎</span><b>Stay in the loop</b><small>Check your sample PNR status and reservation details.</small><em>CHECK PNR ↗</em></button></div>
+
+
+        </section>
+
+
+
+
+
+        <!-- TRAIN SEARCH -->
+        <section id="trainSearch" class="page">
+            <div class="page-heading"><h2>Train Search</h2><p>Choose your route, date and preferred class to explore the available sample services.</p></div>
+            <div class="search-intro-strip"><div><span class="eyebrow">PLAN YOUR NEXT RAIL JOURNEY</span><h3>Find a route that fits your day.</h3><p>Enter your journey details below. You can swap stations, compare the displayed services and continue to the passenger booking form.</p></div><div class="search-intro-badge"><b>01</b><span>SEARCH<br>COMPARE<br>RESERVE</span></div></div>
+            <!-- Search -->
+            <div class="panel">
+
+                <div class="panel-title">
+                    <h3>Train Search</h3>
+                    <span>Journey Details</span>
+                </div>
+
+                <form id="searchForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="from">From Station</label>
+                            <input type="text" id="from"
+                                placeholder="Enter source station"
+                                list="stations" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="to">To Station</label>
+                            <input type="text" id="to"
+                                placeholder="Enter destination station"
+                                list="stations" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Journey Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="travelClass">Travel Class</label>
+                            <select id="travelClass">
+                                <option value="SL">Sleeper (SL)</option>
+                                <option value="3A">AC 3 Tier (3A)</option>
+                                <option value="2A">AC 2 Tier (2A)</option>
+                                <option value="1A">First AC (1A)</option>
+                                <option value="CC">Chair Car (CC)</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <datalist id="stations">
+                        <option value="Chennai">
+                        <option value="Coimbatore">
+                        <option value="Bengaluru">
+                        <option value="Madurai">
+                        <option value="Salem">
+                        <option value="Mumbai">
+                        <option value="New Delhi">
+                        <option value="Hyderabad">
+                        <option value="Kochi">
+                        <option value="Tiruchirappalli">
+                    </datalist>
+
+                    <div class="form-buttons">
+                        <button type="button" class="secondary-btn"
+                            onclick="swapStations()">Swap Stations</button>
+
+                        <button type="submit" class="main-btn">
+                            Search Trains
+                        </button>
+                    </div>
+
+                </form>
+                <div id="peakSeasonWarning" class="peak-warning" aria-live="polite">Select a journey date to check seasonal demand.</div>
+
+            </div>
+
+            <!-- Search Results -->
+            <div id="results" class="results hidden">
+
+                <h3>Available Trains</h3>
+                <p id="searchInfo"></p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Train No.</th>
+                                <th>Train Name</th>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                                <th>Duration</th>
+                                <th>Availability</th>
+                                <th>Fare</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="trainTable"></tbody>
+                    </table>
+                </div>
+
+                <p class="small-note">
+                    All train schedules, fares and availability shown here
+                    are sample data for academic demonstration.
+                </p>
+
+            </div>
+
+            <!-- Other Services -->
+            <div class="services">
+
+                <h3>Other Services</h3>
+
+                <div class="service-links">
+
+                    <button onclick="openPage('pnr')">
+                        <strong>PNR Status</strong>
+                        <span>Check sample reservation details</span>
+                    </button>
+
+                    <button onclick="openPage('bookings')">
+                        <strong>My Bookings</strong>
+                        <span>View your saved tickets</span>
+                    </button>
+
+                    <button onclick="openPage('help')">
+                        <strong>Help & Information</strong>
+                        <span>Instructions for using the portal</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="search-bottom-grid"><article class="panel"><span class="eyebrow">SEARCH TIP</span><h3>Keep station names clear</h3><p>Use one of the suggested station names in the input list. Check that your source and destination are different before searching.</p></article><article class="panel"><span class="eyebrow">NEXT STEP</span><h3>Already booked?</h3><p>Your locally saved demonstration tickets are available in My Bookings. Use PNR Enquiry to look up a saved sample reservation.</p><button class="secondary-btn" onclick="openPage('bookings')">View My Bookings ↗</button></article></div>
+        </section>
+
+        <!-- DESTINATIONS -->
+        <section id="destinations" class="page">
+            <div class="page-heading"><h2>Destination Notebook</h2><p>Explore trip inspiration and discover ideas for your next rail getaway.</p></div>
+            <div class="destination-intro panel"><span class="eyebrow">A LITTLE INSPIRATION FOR THE WAY</span><h3>Pick a place. Make a plan.</h3><p>Browse a few city ideas, think about the kind of break you want and then use Train Search to explore sample routes. Suggested durations are planning ideas, not fixed itineraries.</p><div class="destination-highlights"><span><b>04</b> destination ideas</span><span><b>03</b> trip styles</span><span><b>01</b> place to start</span></div></div>
+            <!-- DESTINATION INSPIRATION -->
+            <section class="home-section destination-section">
+                <div class="section-heading">
+                    <div><span class="eyebrow">DESTINATION NOTEBOOK</span><h3>Find a reason to take the train.</h3><p class="section-subtitle">A few trip ideas to help you start planning your next getaway.</p></div>
+                    <span class="demo-tag">ROUTE INSPIRATION</span>
+                </div>
+                <div class="destination-grid">
+                    <article class="destination-card destination-coast">
+                        <div class="destination-topline"><span>01 / COAST & CULTURE</span><span>WEEKEND IDEA</span></div>
+                        <div class="destination-content"><span class="destination-code">MAA</span><h4>Chennai</h4><p>Explore heritage streets, museums, beaches and lively food districts.</p><div class="destination-meta"><span>Suggested stay</span><b>2–3 days</b></div></div>
+                    </article>
+                    <article class="destination-card destination-hills">
+                        <div class="destination-topline"><span>02 / HILLS & HERITAGE</span><span>SHORT BREAK</span></div>
+                        <div class="destination-content"><span class="destination-code">CBE</span><h4>Coimbatore</h4><p>Use the city as a base for temple visits, local markets and nearby hill escapes.</p><div class="destination-meta"><span>Suggested stay</span><b>2 days</b></div></div>
+                    </article>
+                    <article class="destination-card destination-heritage">
+                        <div class="destination-topline"><span>03 / HISTORY TRAIL</span><span>CULTURE TRIP</span></div>
+                        <div class="destination-content"><span class="destination-code">MDU</span><h4>Madurai</h4><p>Discover celebrated architecture, traditional markets and regional cuisine.</p><div class="destination-meta"><span>Suggested stay</span><b>1–2 days</b></div></div>
+                    </article>
+                    <article class="destination-card destination-city">
+                        <div class="destination-topline"><span>04 / CITY DISCOVERY</span><span>URBAN BREAK</span></div>
+                        <div class="destination-content"><span class="destination-code">SBC</span><h4>Bengaluru</h4><p>Plan a city break around gardens, galleries, cafés and neighbourhood walks.</p><div class="destination-meta"><span>Suggested stay</span><b>2–3 days</b></div></div>
+                    </article>
+                </div>
+                <p class="section-footnote">Destination ideas are editorial suggestions. Check your actual route, train timings and local conditions before travelling.</p>
+            </section>
+
+
+            <div class="destination-planning-grid"><article class="panel"><span class="eyebrow">CULTURE & FOOD</span><h3>Make time to explore</h3><p>Look for local markets, historic streets, museums and regional food experiences. Leave some space in your schedule for unplanned discoveries.</p></article><article class="panel"><span class="eyebrow">BEFORE YOU GO</span><h3>Build a practical itinerary</h3><p>Check local transport from the station, opening hours and accommodation location. Keep return travel and local transfers in your budget.</p></article></div>
+            <div class="destination-cta"><div><span class="eyebrow">READY TO GO?</span><h3>Turn an idea into a journey.</h3><p>Choose your source, destination and date in the train search section.</p></div><button class="main-btn" onclick="openPage('trainSearch')">Explore sample trains ↗</button></div>
+        </section>
+
+        <!-- JOURNEY GUIDE -->
+        <section id="journeyGuide" class="page">
+            <div class="page-heading"><h2>Journey Guide</h2><p>Helpful steps, station reminders and seasonal planning notes for a smoother trip.</p></div>
+            <div class="guide-welcome panel"><span class="eyebrow">THE RAILDESK JOURNEY BLUEPRINT</span><h3>From first plan to final stop.</h3><p>Use this guide as a practical checklist. Work through each stage at your own pace, and open Smart Tools whenever you want help with timings, packing or budgeting.</p><button class="secondary-btn" onclick="openPage('travelTools')">Explore Smart Tools ↗</button></div>
+            <!-- JOURNEY BLUEPRINT -->
+            <section class="home-section journey-blueprint">
+                <div class="section-heading"><div><span class="eyebrow">THE RAILDESK METHOD</span><h3>A smoother journey in four steps.</h3><p class="section-subtitle">Keep the important details together, from the first search to arrival.</p></div></div>
+                <div class="blueprint-grid">
+                    <article class="blueprint-step"><span class="step-number">01</span><div class="step-icon">⌕</div><h4>Choose your route</h4><p>Enter your source, destination, date and preferred class. Compare the sample options shown in the results table.</p><small>START WITH TRAIN SEARCH</small></article>
+                    <article class="blueprint-step"><span class="step-number">02</span><div class="step-icon">◷</div><h4>Prepare your timing</h4><p>Use the leave-home planner to account for road travel and a station buffer. Aim to arrive early enough to find your platform.</p><small>PLAN YOUR DEPARTURE</small></article>
+                    <article class="blueprint-step"><span class="step-number">03</span><div class="step-icon">▤</div><h4>Keep details handy</h4><p>Review passenger information, berth preference and booking details. Save or print the ticket for easy reference.</p><small>CHECK YOUR BOOKING</small></article>
+                    <article class="blueprint-step"><span class="step-number">04</span><div class="step-icon">✦</div><h4>Enjoy the journey</h4><p>Keep essentials accessible, follow station announcements and use the journey tools to organise your trip.</p><small>TRAVEL WITH CONFIDENCE</small></article>
+                </div>
+            </section>
+
+            <!-- TRAVEL SMART GUIDE -->
+            <section class="home-section travel-guide-section">
+                <div class="guide-heading"><div><span class="eyebrow">GOOD TO KNOW</span><h3>Little details. Better journeys.</h3><p>Practical reminders to make your time at the station and onboard more comfortable.</p></div><button class="secondary-btn" onclick="openPage('travelTools')">Open all travel tools ↗</button></div>
+                <div class="guide-grid">
+                    <article class="guide-card"><span class="guide-index">01</span><div><h4>Before leaving home</h4><p>Recheck the journey date, station name and departure time. Keep your ticket reference and a valid photo ID easy to reach.</p><ul><li>Charge your phone</li><li>Keep a power bank ready</li><li>Check your route to the station</li></ul></div></article>
+                    <article class="guide-card"><span class="guide-index">02</span><div><h4>At the station</h4><p>Read the electronic display boards and listen for announcements. Confirm the platform using official station information.</p><ul><li>Allow time for security and walking</li><li>Use marked foot overbridges</li><li>Ask authorised railway staff for help</li></ul></div></article>
+                    <article class="guide-card"><span class="guide-index">03</span><div><h4>On the train</h4><p>Keep your belongings in sight and be considerate of fellow passengers, especially during night journeys.</p><ul><li>Keep aisles and doors clear</li><li>Use headphones for audio</li><li>Dispose of waste responsibly</li></ul></div></article>
+                </div>
+            </section>
+
+            <!-- SEASONAL PLANNER -->
+            <section class="home-section seasonal-section">
+                <div class="seasonal-copy"><span class="eyebrow">PLAN AHEAD</span><h3>Travel seasons at a glance.</h3><p>Demand can rise around holidays, festivals and school breaks. Start comparing options early and keep your plans flexible.</p><button class="main-btn" onclick="openPage('trainSearch'); document.getElementById('date').focus()">Choose a journey date</button></div>
+                <div class="season-timeline">
+                    <article><span class="season-month">JAN – MAR</span><b>New-year escapes</b><p>Consider long weekends and pleasant-weather city breaks. Check local event dates before finalising stays.</p></article>
+                    <article><span class="season-month">APR – JUN</span><b>Summer holidays</b><p>Family travel can increase during school breaks. Compare dates early and plan extra station time.</p></article>
+                    <article><span class="season-month">JUL – SEP</span><b>Monsoon journeys</b><p>Allow extra flexibility for road transfers and check weather and service advisories before departure.</p></article>
+                    <article><span class="season-month">OCT – DEC</span><b>Festival season</b><p>Popular dates may fill quickly around festive periods. Keep alternate dates and routes in mind.</p></article>
+                </div>
+            </section>
+
+
+            <div class="guide-extra-grid"><article class="panel"><span class="eyebrow">TRAVEL COMFORT</span><h3>Make the ride easier</h3><p>Wear comfortable layers, keep water accessible where permitted, carry essential medication and store valuables securely. Be considerate of shared space and fellow passengers.</p></article><article class="panel"><span class="eyebrow">FLEXIBLE PLANNING</span><h3>Have a back-up plan</h3><p>Save your booking details, note an alternate local transport option and keep important contact information available offline in case mobile connectivity is limited.</p></article></div>
+        </section>
+
+        <!-- SMART TRAVEL TOOLS -->
+        <section id="travelTools" class="page">
+            <div class="page-heading">
+                <h2>Unique Travel Features</h2>
+                <p>Explore RailDesk's special interactive features for planning, coordinating and managing your sample journey.</p>
+            </div>
+
+            <div class="tools-overview"><div><span class="eyebrow">A POCKET-SIZED TRAVEL DESK</span><h3>Everything to think ahead, in one place.</h3><p>Estimate your costs, choose a comfortable class, plan your station arrival and prepare the little things that make a trip easier.</p></div><div class="tools-overview-stats"><div><b>01</b><span>Plan</span><small>Class, timing & budget</small></div><div><b>02</b><span>Prepare</span><small>Checklist & station guide</small></div><div><b>03</b><span>Travel</span><small>Share, rate & track</small></div></div></div>
+            <div class="tool-category-heading"><span class="eyebrow">YOUR TRIP TOOLKIT</span><h3>Explore all travel utilities</h3><p>Each tool below has its own action. Results are generated locally for this demonstration.</p></div>
+            <div class="tool-grid">
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Class Advisor Quiz</h3><span>3 quick questions</span></div>
+                    <div class="form-group"><label for="advisorBudget">What is your budget?</label><select id="advisorBudget"><option value="low">Low / economical</option><option value="medium">Moderate</option><option value="high">Flexible / premium</option></select></div>
+                    <div class="form-group"><label for="advisorComfort">How important is comfort?</label><select id="advisorComfort"><option value="basic">Basic is fine</option><option value="normal">Moderately important</option><option value="high">Very important</option></select></div>
+                    <div class="form-group"><label for="advisorTime">When do you prefer to travel?</label><select id="advisorTime"><option value="day">Day</option><option value="night">Night</option></select></div>
+                    <button class="main-btn" onclick="recommendClass()">Recommend my class</button><p id="classAdvice" class="tool-result" aria-live="polite"></p>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Leave-home Planner</h3><span>Arrival buffer included</span></div>
+                    <div class="form-group"><label for="homeDistance">Distance to station (km)</label><input type="number" id="homeDistance" min="0" step="0.1" value="8"></div>
+                    <div class="form-group"><label for="homeDeparture">Train departure time</label><input type="time" id="homeDeparture" value="08:30"></div>
+                    <div class="form-group"><label for="homeTravel">Travel time to station (minutes)</label><input type="number" id="homeTravel" min="0" value="30"></div>
+                    <div class="form-group"><label for="homeBuffer">Station buffer (minutes)</label><input type="number" id="homeBuffer" min="0" value="30"></div>
+                    <button class="main-btn" onclick="planLeaveHome()">Calculate leave time</button><p id="leaveResult" class="tool-result" aria-live="polite"></p>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Trip Budget Planner</h3><span>Estimated costs</span></div>
+                    <div class="form-group"><label for="budgetFare">Train fare (₹)</label><input type="number" id="budgetFare" min="0" value="650"></div>
+                    <div class="form-group"><label for="budgetFood">Food (₹)</label><input type="number" id="budgetFood" min="0" value="300"></div>
+                    <div class="form-group"><label for="budgetLocal">Local transport (₹)</label><input type="number" id="budgetLocal" min="0" value="200"></div>
+                    <button class="main-btn" onclick="calculateTripBudget()">Calculate trip cost</button><p id="budgetResult" class="tool-result" aria-live="polite"></p><div class="budget-bar"><div id="budgetBar"></div></div>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Group Fare Splitter</h3><span>Up to 4 friends</span></div>
+                    <div class="form-group"><label for="groupFare">Total group fare (₹)</label><input type="number" id="groupFare" min="0" value="650"></div>
+                    <div class="form-group"><label for="friendCount">Number of friends joining (excluding you)</label><select id="friendCount"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
+                    <div id="friendNameFields"></div>
+                    <button class="main-btn" onclick="splitGroupFare()">Split fare</button><p id="splitResult" class="tool-result" aria-live="polite"></p>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Travel Buddy Tags</h3><span>Demo coach view</span></div>
+                    <div class="form-group"><label for="buddyTag">Choose your travel style</label><select id="buddyTag"><option>Quiet</option><option>Family</option><option>Student</option></select></div>
+                    <button class="main-btn" onclick="showBuddyNeighbours()">Find compatible neighbours</button><div id="buddyResult" class="tool-result"></div>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Station Guide</h3><span>Facilities & tips</span></div>
+                    <div class="form-group"><label for="guideStation">Select station</label><select id="guideStation"><option>Chennai</option><option>Coimbatore</option><option>Bengaluru</option><option>Madurai</option><option>Salem</option><option>Mumbai</option><option>New Delhi</option><option>Hyderabad</option><option>Kochi</option><option>Tiruchirappalli</option></select></div>
+                    <button class="main-btn" onclick="showStationGuide()">View station guide</button><div id="stationGuideResult" class="tool-result"></div>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Packing Checklist Generator</h3><span>Trip-based list</span></div>
+                    <div class="form-group"><label for="packDestination">Destination</label><input id="packDestination" type="text" placeholder="e.g. Coimbatore"></div>
+                    <div class="form-group"><label for="packDays">Trip length (days)</label><input id="packDays" type="number" min="1" max="60" value="3"></div>
+                    <div class="form-group"><label for="packClass">Travel class</label><select id="packClass"><option>SL</option><option>3A</option><option>2A</option><option>1A</option><option>CC</option></select></div>
+                    <button class="main-btn" onclick="generatePackingList()">Generate checklist</button><div id="packingResult" class="tool-result checklist-result"></div>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Arrival Wake-up Alarm</h3><span>Local demo countdown</span></div>
+                    <div class="form-group"><label for="alarmDateTime">Wake-up date and time</label><input type="datetime-local" id="alarmDateTime"></div>
+                    <button class="main-btn" onclick="startArrivalAlarm()">Set arrival alarm</button><button class="secondary-btn" onclick="stopArrivalAlarm()">Stop alarm</button><p id="alarmResult" class="tool-result" aria-live="polite">No alarm set.</p>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Rate My Journey</h3><span>Ratings saved on this browser</span></div>
+                    <div class="form-group"><label for="ratingTrain">Train</label><select id="ratingTrain"></select></div>
+                    <div class="form-group"><label for="journeyRating">Your rating</label><select id="journeyRating"><option value="5">★★★★★ - Excellent</option><option value="4">★★★★ - Good</option><option value="3">★★★ - Average</option><option value="2">★★ - Poor</option><option value="1">★ - Bad</option></select></div>
+                    <button class="main-btn" onclick="saveJourneyRating()">Submit rating</button><p id="ratingResult" class="tool-result"></p>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Waitlist Swap Board</h3><span>Sample community offers</span></div>
+                    <div class="form-group"><label for="swapPnr">Your PNR (waitlisted passenger)</label><input id="swapPnr" maxlength="10" placeholder="10-digit PNR"></div>
+                    <div class="form-group"><label for="swapDetails">Swap offer details</label><input id="swapDetails" placeholder="e.g. Need lower berth"></div>
+                    <button class="main-btn" onclick="postSwapOffer()">Post offer</button><div id="swapBoard" class="tool-result"></div>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Complaint Desk</h3><span>Demo complaint tracking</span></div>
+                    <div class="form-group"><label for="complaintPnr">PNR number</label><input id="complaintPnr" maxlength="10" placeholder="Enter PNR"></div>
+                    <div class="form-group"><label for="complaintText">Complaint</label><textarea id="complaintText" rows="3" placeholder="Describe your issue"></textarea></div>
+                    <button class="main-btn" onclick="submitComplaint()">Submit complaint</button><div id="complaintResult" class="tool-result"></div>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Eco Comparison</h3><span>Illustrative CO₂ estimate per passenger</span></div>
+                    <div id="ecoBars" class="eco-bars"></div><p class="small-note">Illustrative comparison only; actual emissions vary by route, vehicle and occupancy.</p>
+                </div>
+
+                <div class="panel tool-panel">
+                    <div class="panel-title"><h3>Cancellation Guard</h3><span>Optional demo add-on</span></div>
+                    <p class="tool-result">Add ₹1 per passenger to your sample booking. The demo marks the booking as guard-protected; it does not process payments or issue a real refund.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKINGS -->
+        <section id="bookings" class="page">
+
+            <div class="page-heading">
+                <h2>My Bookings</h2>
+                <p>Review saved tickets, journey spending and your travel history.</p>
+            </div>
+
+            <div class="booking-summary-grid"><article class="booking-summary-card"><span>▣</span><small>Saved reservations</small><strong id="bookingCount">0</strong><em>Stored in this browser</em></article><article class="booking-summary-card"><span>₹</span><small>Total sample spend</small><strong id="bookingSpend">₹0</strong><em>Based on saved tickets</em></article><article class="booking-summary-card"><span>↗</span><small>Next journey</small><strong id="nextJourney">Not scheduled</strong><em>Your upcoming trip</em></article></div>
+            <div class="section-heading inner-section-heading"><div><span class="eyebrow">YOUR RESERVATION WALLET</span><h3>Tickets & journey records</h3><p>Confirmed demo reservations appear here. Open a ticket to review passenger and route details.</p></div></div>
+            <div id="bookingContainer"></div>
+            <div class="booking-tips-grid"><article class="panel"><span class="eyebrow">KEEP IT HANDY</span><h3>Before you leave</h3><p>Check the journey date, source and destination, passenger names and selected berth. Keep a digital or printed copy of your ticket available.</p><button class="secondary-btn" onclick="openPage('pnr')">Check PNR status ↗</button></article><article class="panel"><span class="eyebrow">NEED TO PLAN AGAIN?</span><h3>Start another journey</h3><p>Compare sample trains, choose a class and create another reservation. Your demo bookings remain saved in this browser.</p><button class="main-btn" onclick="openPage('trainSearch')">Search trains ↗</button></article></div>
+            <div class="dashboard-charts"><div class="panel"><div class="panel-title"><h3>Spending Overview</h3></div><div id="spendingChart"></div></div><div class="panel"><div class="panel-title"><h3>Journey Eco Overview</h3></div><div id="bookingEcoChart"></div></div></div>
+
+        </section>
+
+
+        <!-- PNR -->
+        <section id="pnr" class="page">
+
+            <div class="page-heading">
+                <h2>PNR Enquiry</h2>
+                <p>Enter your ten-digit PNR number below.</p>
+            </div>
+
+            <div class="panel enquiry-panel">
+
+                <div class="form-group">
+                    <label for="pnrNumber">PNR Number</label>
+                    <input type="text" id="pnrNumber"
+                        maxlength="10"
+                        placeholder="Enter 10 digit PNR">
+                </div>
+
+                <button class="main-btn" onclick="checkPNR()">
+                    Check PNR
+                </button>
+
+                <div id="pnrDetails"></div>
+
+                <p class="small-note">
+                    PNR information is simulated. No connection to
+                    the actual railway reservation database is available.
+                </p>
+
+            </div>
+            <div class="pnr-information-grid"><article class="panel"><span class="eyebrow">HOW IT WORKS</span><h3>Read your PNR in three steps</h3><ol class="numbered-steps"><li><b>Enter the number</b><span>Use the 10-digit PNR shown on your sample ticket.</span></li><li><b>Run the enquiry</b><span>RailDesk checks its locally saved demo booking records.</span></li><li><b>Review passenger status</b><span>Read the displayed train, date, class and berth details.</span></li></ol></article><article class="panel"><span class="eyebrow">STATUS KEY</span><h3>What the status means</h3><div class="pnr-status-line"><b class="status-pill confirmed">CNF</b><p>Confirmed — a coach and berth are assigned in the demo record.</p></div><div class="pnr-status-line"><b class="status-pill waiting">WL</b><p>Waitlist — confirmation is still pending in the sample record.</p></div><div class="pnr-status-line"><b class="status-pill cancelled">CAN</b><p>Cancelled — the reservation is not active.</p></div></article><article class="panel pnr-note-card"><span class="eyebrow">IMPORTANT NOTE</span><h3>Demo enquiry, not live railway data</h3><p>This academic portal does not connect to the official railway reservation system. It can show details only for bookings created and saved inside this browser.</p><button class="secondary-btn" onclick="openPage('bookings')">View my bookings ↗</button></article></div>
+
+        </section>
+
+
+        <!-- HELP -->
+        <section id="help" class="page">
+
+            <div class="page-heading">
+                <h2>Help & Information</h2>
+                <p>Some instructions to use the RailDesk portal.</p>
+            </div>
+
+            <div class="panel help-panel">
+
+                <h3>How to search for trains?</h3>
+                <ol>
+                    <li>Enter your departure station.</li>
+                    <li>Enter your destination station.</li>
+                    <li>Select your journey date.</li>
+                    <li>Choose your preferred travel class.</li>
+                    <li>Click Search Trains.</li>
+                    <li>Choose a train and enter passenger details.</li>
+                </ol>
+
+                <hr>
+
+                <h3>How to save a booking?</h3>
+                <ol>
+                    <li>Search for a train.</li>
+                    <li>Click the Book button.</li>
+                    <li>Enter the passenger name and age.</li>
+                    <li>Confirm your reservation.</li>
+                    <li>View the saved ticket under My Bookings.</li>
+                </ol>
+
+                <hr>
+                <h3>How do I check a PNR?</h3><ol><li>Open PNR Enquiry from the top navigation.</li><li>Enter the 10-digit number from a saved RailDesk ticket.</li><li>Select Check PNR to view the locally stored demo status.</li></ol>
+                <hr><h3>Where can I find travel planning tools?</h3><p>Open Smart Tools for the class advisor, leave-home planner, budget calculator, group fare splitter, travel buddy suggestions, station guide, packing checklist, arrival alarm, journey ratings, swap board, complaint desk and eco comparison.</p>
+                <hr><h3>Why is my booking list empty?</h3><p>Bookings are stored in your browser. If you have not completed a sample reservation on this device and browser, the list will show an empty state. Creating a booking from Train Search will add it here.</p>
+                <hr><h3>Can I use RailDesk for a real train reservation?</h3><p>No. RailDesk is an academic demonstration project. Train availability, fares, PNR status, complaint tracking and cancellation protection are simulated and do not replace official railway services.</p>
+            </div>
+            <div class="help-bottom-grid"><article class="panel"><span class="eyebrow">QUICK NAVIGATION</span><h3>Go straight to a feature</h3><div class="help-link-list"><button onclick="openPage('trainSearch')">⌕ <span><b>Train Search</b><small>Find sample trains and create a ticket</small></span> ↗</button><button onclick="openPage('bookings')">▤ <span><b>My Bookings</b><small>Review your saved reservations</small></span> ↗</button><button onclick="openPage('pnr')">◎ <span><b>PNR Enquiry</b><small>Look up a saved demo booking</small></span> ↗</button><button onclick="openPage('travelTools')">⌁ <span><b>Travel Tools</b><small>Prepare and organise your trip</small></span> ↗</button></div></article><article class="panel"><span class="eyebrow">TROUBLESHOOTING</span><h3>Quick checks</h3><ul class="help-check-list"><li>Use a supported station name from the search suggestions.</li><li>Choose a journey date before searching.</li><li>Enter passenger details before confirming a booking.</li><li>Use the same browser where you created your reservation.</li><li>Refresh the page if a locally saved item does not appear.</li></ul><p class="small-note">RailDesk is a student project demo; no live support desk or railway API is connected.</p></article></div>
+
+            <div class="help-faq-block"><div class="section-heading"><div><span class="eyebrow">QUICK ANSWERS</span><h3>Frequently asked questions.</h3><p class="section-subtitle">A quick guide to using the RailDesk demonstration portal.</p></div></div>
+                <div class="faq-grid">
+                    <details open><summary>Are the train schedules and fares live?</summary><p>No. This is an academic demonstration using sample train, fare and availability data. It is not connected to IRCTC or a live railway reservation system.</p></details>
+                    <details><summary>How do I search for a train?</summary><p>Enter the source and destination stations, choose your journey date and travel class, then select Search Trains. Matching sample services appear in the results table.</p></details>
+                    <details><summary>Where can I find a ticket after booking?</summary><p>Open My Bookings to view saved demonstration bookings. From the ticket confirmation, you can also print the ticket or use Share my journey where supported by your browser.</p></details>
+                    <details><summary>What can I do in Smart Travel Tools?</summary><p>You can compare a suggested class, calculate when to leave for the station, estimate a trip budget, split group costs, view station tips and prepare a packing checklist.</p></details>
+                    <details><summary>Can I check a real PNR number here?</summary><p>The PNR Enquiry page demonstrates the interface with sample records only. For actual booking status, use the official railway service associated with your ticket.</p></details>
+                    <details><summary>What should I do if my plans change?</summary><p>Use the sample cancellation and complaint features to explore the portal workflow. For a real ticket, follow the cancellation and support instructions of the official booking provider.</p></details>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- PASSENGER FORM MODAL -->
+        <div id="bookingModal" class="modal hidden">
+
+            <div class="modal-content">
+
+                <div class="modal-heading">
+                    <h3>Passenger Details</h3>
+                    <button onclick="closeModal()" class="close-btn">X</button>
+                </div>
+
+                <div id="selectedTrainInfo"></div>
+
+                <form id="passengerForm">
+
+                    <div class="form-group">
+                        <label for="passengerName">Passenger Name</label>
+                        <input type="text" id="passengerName"
+                            placeholder="Enter full name" required>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="passengerAge">Age</label>
+                            <input type="number" id="passengerAge"
+                                min="1" max="120" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="">Select</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bookingBerth">Preferred berth</label>
+                        <select id="bookingBerth"><option value="Auto">No preference</option><option>Lower</option><option>Middle</option><option>Upper</option><option>Side Lower</option><option>Side Upper</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="cancellationGuard"> Add Cancellation Guard (₹1 per passenger)</label>
+                    </div>
+                    <button type="submit" class="main-btn">
+                        Confirm Booking
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- TICKET MODAL -->
+        <div id="ticketModal" class="modal hidden">
+
+            <div class="modal-content ticket">
+
+                <h2>RailDesk</h2>
+                <p>RESERVATION CONFIRMATION</p>
+
+                <hr>
+
+                <div id="ticketDetails"></div>
+
+                <div class="ticket-buttons">
+                    <button class="main-btn" onclick="window.print()">
+                        Print Ticket
+                    </button>
+
+                    <button class="secondary-btn" onclick="shareCurrentJourney()">Share my journey</button>
+                    <button class="secondary-btn" onclick="closeTicket()">
+                        Close
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand"><h3>Rail<span>Desk</span></h3><p>Thoughtful planning for every rail journey.</p><small>Explore the sample reservation portal, organise trip details and prepare with practical travel tools.</small></div>
+        <div class="footer-links"><b>EXPLORE</b><button onclick="openPage('home')">Home</button><button onclick="openPage('trainSearch')">Train Search</button><button onclick="openPage('destinations')">Destinations</button><button onclick="openPage('journeyGuide')">Journey Guide</button><button onclick="openPage('travelTools')">Unique Features</button></div><div class="footer-links"><b>MY RAILDESK</b><button onclick="openPage('bookings')">My Bookings</button><button onclick="openPage('pnr')">PNR Enquiry</button><button onclick="openPage('help')">Help & Information</button></div>
+        <div class="footer-links"><b>SUPPORT</b><button onclick="openPage('pnr')">PNR Enquiry</button><button onclick="openPage('help')">Help & Information</button><span>Demo portal · Academic project</span></div>
+        <div class="footer-bottom">© 2026 RailDesk · Demonstration interface only. Train schedules, fares, PNR details and availability are simulated and are not live railway data.</div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
